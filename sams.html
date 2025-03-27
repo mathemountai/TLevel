@@ -39,6 +39,19 @@
       background: #d4edda;
       cursor: default;
     }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -48,19 +61,31 @@
     <div class="column" id="terms"></div>
     <div class="column" id="definitions"></div>
   </div>
+  <button onclick="initGame()">Reset Game</button>
 
   <script>
-    const pairs = [
-      ["Revenue", "Money earned from selling goods or services."],
-      ["Assets", "Things a business owns, like cash, equipment, or stock."],
-      ["Liabilities", "Money the business owes, like loans or unpaid bills."],
-      ["Net Profit", "What’s left after all costs and expenses are subtracted from revenue."],
-      ["Accrual", "An expense or income recorded before payment or receipt."],
-      ["Prepayment", "Money paid in advance for goods or services."],
-      ["Gross Profit", "Revenue minus the direct cost of goods sold."],
-      ["VAT", "A tax added to most goods and services."],
-      ["Closing Stock", "Unsold goods left at the end of a period."],
-      ["Owner’s Capital", "Money the owner has invested in the business."]
+    const fullPairs = [
+      ["Assets", "Resources owned by the business"],
+      ["Liabilities", "Obligations or debts owed by the business"],
+      ["Equity", "The owner's claim on the assets"],
+      ["Current Assets", "Cash, accounts receivable, inventory"],
+      ["Non-Current Assets", "Property, plant, and equipment"],
+      ["Current Liabilities", "Accounts payable, short-term loans"],
+      ["Non-Current Liabilities", "Bonds payable, long-term debt"],
+      ["Net Assets", "Total assets minus total liabilities"],
+      ["Liquidity", "Ability to meet short-term obligations"],
+      ["Profit/Loss Statement", "Shows the income and expenses during a period"],
+      ["Retained Earnings", "Profits kept in the business for future use"],
+      ["Depreciation", "Reduction in the value of an asset over time"],
+      ["Accounts Payable", "Money owed to suppliers"],
+      ["Accounts Receivable", "Money owed by customers"],
+      ["Inventory", "Goods available for sale"],
+      ["Accruals", "Expenses incurred but not yet paid"],
+      ["Prepaid Expenses", "Payments made in advance for future expenses"],
+      ["Goodwill", "The value of reputation and customer relationships"],
+      ["Capital", "Money invested by the owner or shareholders"],
+      ["Intangible Assets", "Assets like patents and trademarks"],
+      ["Balance Sheet Equation", "Assets = Liabilities + Equity"]
     ];
 
     let selectedTerm = null;
@@ -73,15 +98,29 @@
       }
     }
 
-    const terms = [...pairs.map(p => p[0])];
-    const definitions = [...pairs.map(p => p[1])];
-    shuffle(terms);
-    shuffle(definitions);
+    function initGame() {
+      selectedTerm = null;
+      selectedDefinition = null;
 
-    const termCol = document.getElementById('terms');
-    const defCol = document.getElementById('definitions');
+      const termCol = document.getElementById('terms');
+      const defCol = document.getElementById('definitions');
+      termCol.innerHTML = '';
+      defCol.innerHTML = '';
 
-    function createItem(text, type) {
+      const gamePairs = [...fullPairs];
+      shuffle(gamePairs);
+      const pairs = gamePairs.slice(0, 10);
+
+      const terms = pairs.map(p => p[0]);
+      const definitions = pairs.map(p => p[1]);
+      shuffle(terms);
+      shuffle(definitions);
+
+      terms.forEach(term => termCol.appendChild(createItem(term, 'term', pairs)));
+      definitions.forEach(def => defCol.appendChild(createItem(def, 'definition', pairs)));
+    }
+
+    function createItem(text, type, pairs) {
       const div = document.createElement('div');
       div.classList.add(type);
       div.textContent = text;
@@ -125,8 +164,9 @@
       return div;
     }
 
-    terms.forEach(term => termCol.appendChild(createItem(term, 'term')));
-    definitions.forEach(def => defCol.appendChild(createItem(def, 'definition')));
+    // Initialize on load
+    window.onload = initGame;
   </script>
 </body>
 </html>
+
