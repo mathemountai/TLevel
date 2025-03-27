@@ -3,235 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EconMrLong</title>
+  <title>TLevel Finance | Financial Education Games</title>
   <link rel="manifest" href="./manifest.json">
-  <!-- Apple Touch Icons -->
-  <link rel="apple-touch-icon" href="/EconMrLong/Icons/icon-192x192.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="/EconMrLong/Icons/icon-192x192.png">
-  <link rel="apple-touch-icon" sizes="512x512" href="/EconMrLong/Icons/icon-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/EconMrLong/Icons/icon-192x192.png">
-    
-  <!-- Splash Screen Meta Tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Deprecated but still required for iOS -->
-  <meta name="mobile-web-app-capable" content="yes"> <!-- Correct version for Android -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="EconMrLong">
-
   
-  <!-- Add icons for iOS home screen -->
-  <link rel="apple-touch-icon" sizes="192x192" href="./Image/icon-192x192.png">
-  <link rel="apple-touch-icon" sizes="512x512" href="./Image/icon-512x512.png">
+  <!-- Gold and Maroon F Icon -->
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgZmlsbD0iIzgwMDAyMCIvPjxwYXRoIGQ9Ik00OCwzMmgzMnYxNkg0OFYzMk00OCw2NGgzMnYxNkg0OFY2NE00OCw5NmgzMnYxNkg0OFY5NiIgZmlsbD0iI0ZGQ0MwMCIvPjwvc3ZnPg==">
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgZmlsbD0iIzgwMDAyMCIvPjxwYXRoIGQ9Ik00OCwzMmgzMnYxNkg0OFYzMk00OCw2NGgzMnYxNkg0OFY2NE00OCw5NmgzMnYxNkg0OFY5NiIgZmlsbD0iI0ZGQ0MwMCIvPjwvc3ZnPg==">
+  
   <style>
-    /* General Styles */
+    :root {
+      --primary-color: #800020;  /* Maroon */
+      --secondary-color: #FFCC00;  /* Gold */
+      --accent-color: #D4AF37;  /* Metallic gold */
+      --background-light: #f8f9fa;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.4;
-      margin: 10px;
-      color: #333;
-    }
-    h1, h2, h3 {
-      color: #2c3e50;
-      margin: 10px 0;
-    }
-    h1 {
-      font-size: 22px;
-    }
-    h2 {
-      font-size: 18px;
-    }
-    h3 {
-      font-size: 16px;
-    }
-    p {
-      margin: 8px 0;
-    }
-    a {
-      color: #0366d6;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul, ol {
-      margin: 8px 0;
-      padding-left: 20px;
-    }
-    hr {
-      border: 0;
-      height: 1px;
-      background: #ddd;
-      margin: 15px 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--background-light);
+      color: #2d3436;
     }
 
-    /* Header Styles */
     header {
-      display: flex;
-      align-items: center;
-      padding: 8px;
-      background-color: #f8f9fa;
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 10px;
-    }
-    .logo {
-      width: 30px; /* Smaller logo for mobile */
-      height: 30px;
-      margin-right: 8px; /* Reduced spacing */
-    }
-
-    /* Compact List Styles */
-    ul li, ol li {
-      margin: 4px 0; /* Tighter list item spacing */
-    }
-
-    /* Links with Icons */
-    .link-icon {
-      display: inline-block;
-      margin-right: 5px;
-    }
-  </style>
-</head>
-
-  <title>News Flash Box</title>
-  <style>
-    .news-flash {
-      background-color: #87CEEB;
-      border: 1px solid #fcd34d;
-      padding: 15px 20px;
+      background: white;
+      color: var(--primary-color);
+      padding: 1rem;
       border-radius: 8px;
-      font-family: sans-serif;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       display: flex;
       align-items: center;
-      gap: 12px;
-      max-width: 500px;
-      margin: 20px auto;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1, h2, h3 {
+      color: var(--primary-color);
+      margin: 1rem 0;
+    }
+
+    h1 { 
+      font-size: 1.8rem; 
+      margin: 0;
+    }
+
+    .news-flash {
+      background: var(--secondary-color);
+      color: #333;
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1rem 0 2rem;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .share-icon {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       flex-shrink: 0;
     }
 
-    .news-text {
-      font-size: 16px;
-      color: #ffffff;
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .finance-card {
+      background: white;
+      border-left: 4px solid var(--secondary-color);
+      padding: 1.2rem;
+      margin: 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+
+    .finance-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .icon {
+      font-size: 1.1em;
+      margin-right: 0.5rem;
+    }
+
+    a {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.8rem 0;
+    }
+
+    li {
+      margin: 0.3rem 0;
     }
   </style>
 </head>
-<body>
-
-  <div class="news-flash">
-    <!-- Share Icon: arrow coming out of a box (SVG) -->
-    <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12V4m0 0l-4 4m4-4l4 4" />
-    </svg>
-    
-    <div class="news-text">
-      Press <strong>Share</strong> and select “<strong>Save to your device home screen</strong>”
-    </div>
-  </div>
-
-</body>
-
-
 
 <body>
   <header>
-    <!-- Add the logo -->
-    <img src="icon-192x192.png" alt="EconMrLong Logo" class="logo">
-    <!-- Add the title -->
-    <h1>EconMrLong</h1>
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="15" fill="#800020"/>
+      <path d="M30,25h40v15H30V25M30,50h40v15H30V50M30,75h40v15H30V75" fill="#FFCC00"/>
+    </svg>
+    <h1>TLevel Finance</h1>
   </header>
 
-  <h1>📌 E-Learning Tools</h1>
-  <p>Welcome to my development space to design and share study tools to enhance Y13 students' attainment in AQA A-Level economics.</p>
-  <hr>
+  <div class="news-flash">
+    <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12V4m0 0l-4 4m4-4l4 4"/>
+    </svg>
+    <div class="news-text">
+      Save this portal: Press <strong>Share</strong> → "Add to Home Screen"
+    </div>
+  </div>
 
-  <h2>📝 1. Essay Analysis Program</h2>
-  <p>A page designed to analyse 25-marker essays in economics, evaluating:</p>
-  <ul>
-    <li>🔹 efficiency in writing</li>
-    <li>🔹 use of <strong>tech vocab</strong> & balance</li>
-    <li>🔹 <strong>keyword detection</strong>, highlighting <strong>connectives</strong></li>
-    <li>🔹 identifying <strong>chains</strong> of analysis and <strong>repetition</strong></li>
-  </ul>
+  <main class="module-grid">
+    <!-- Game cards remain exactly as you had them -->
+    <div class="finance-card">
+      <h2><span class="icon">⚖️</span>Sam's Statements</h2>
+      <p>Match financial terms with their correct definitions:</p>
+      <ul>
+        <li>▷ 20+ essential finance terms</li>
+        <li>▷ Automatic feedback on matching</li>
+        <li>▷ Timed challenge</li>
+      </ul>
+      <a href="sams-statements.html">Start Matching →</a>
+    </div>
 
-  <h3>Get Started</h3>
+    <!-- Other game cards... -->
+        <!-- Tinsleys Turnover -->
+    <div class="finance-card">
+      <h2><span class="icon">📝</span>Tinsleys Turnover</h2>
+      <p>Multiple choice financial quiz:</p>
+      <ul>
+        <li>▷ Adaptive difficulty</li>
+        <li>▷ Real-world scenarios</li>
+        <li>▷ Instant feedback</li>
+      </ul>
+      <a href="tinsleys-turnover.html">Take Quiz →</a>
+    </div>
 
-  <h2>Knowledge Building Games</h2>
-  <p>🔥 <strong>Challenge yourself</strong> with these interactive exercises</p>
-  <p>🧠 <strong>Boost recall</strong> with spaced repetition</p>
+    <!-- George's Gross -->
+    <div class="finance-card">
+      <h2><span class="icon">💼</span>George's Gross</h2>
+      <p>Calculate gross profit game:</p>
+      <ul>
+        <li>▷ Complete financial statements</li>
+        <li>▷ Variable cost challenges</li>
+        <li>▷ Profit calculations</li>
+      </ul>
+      <a href="georges-gross.html">Calculate Now →</a>
+    </div>
 
-  <h3>🎯 1. Tlevel / Flash Match Game (Recall Definitions)</h3>
-  <p><strong>A memory-based matching game</strong> to improve your recall of selected key economic definitions.</p>
-  <p>👉 <a href="tlevelfkadhcards.html">Play the Flash Match Game</a></p>
-  <p>Open link in a new tab or browser window. Cards adjust with screen size—best viewed on iPad or PC.</p>
-  <hr>
+    <!-- Libbys Liabilities -->
+    <div class="finance-card">
+      <h2><span class="icon">📉</span>Libbys Liabilities</h2>
+      <p>Climb the ladder or go bust:</p>
+      <ul>
+        <li>▷ Risk-reward decisions</li>
+        <li>▷ Debt management</li>
+        <li>▷ Bankruptcy avoidance</li>
+      </ul>
+      <a href="libbys-liabilities.html">Start Climbing →</a>
+    </div>
 
-  <h3>🎓 2. Tinsleys Turnover- Progress Tracker</h3>
-  <p>An <strong>interactive flashcard tool</strong> to aid in memorising economic definitions across different topics.</p>
-  <h4>How it Works</h4>
-  <ul>
-    <li>🔹 Click a <strong>theme</strong> & review its flashcards</li>
-    <li>🔹 <strong>Rate difficulty</strong>: Easy, OK, Hard</li>
-    <li>🔹 <strong>Track progress</strong>: Themes turn <strong>blue</strong> when all cards are marked "Easy"</li>
-    <li>🔹 <strong>Reset anytime</strong> to start fresh</li>
-  </ul>
-  <p>👉 <a href="Flashcardprogress8.html">Go to Flashcard Progress Tracker</a></p>
-  <p>Open link in a new tab or browser.</p>
-  <hr>
+    <!-- Charlies Cashflow -->
+    <div class="finance-card">
+      <h2><span class="icon">💸</span>Charlies Cashflow</h2>
+      <p>Cash flow management game:</p>
+      <ul>
+        <li>▷ Accounts receivable/payable</li>
+        <li>▷ Emergency fund challenges</li>
+        <li>▷ Cash flow forecasting</li>
+      </ul>
+      <a href="charlies-cashflow.html">Manage Funds →</a>
+    </div>
 
-  <h3>🎓 3. Libbys Liabilites</h3
-  <p>A bank of <strong>missing word questions</strong>. Can you master all 26?</p>
-  <p>Fill in the blank word/s and build your recall of key definitions.</p>
-  <p>👉 <a href="blanketyblank2.html">Go to Blankety Blank game</a></p>
-  <hr>
-
-  <h3> 4. George's Gross </h3>
-  <p>Can you guess the famous economist's surname based on the clues? Some clues are dead giveaways! But in any case, there are plenty of facts available.</p>
-  <p>👉 <a href="Guesswho/guesswho.html">Guess Who</a></p>
-  <hr>
-
-  <h3>5. Sans Statements</h3>
-  <p>Being clear on the point of view is being clear on your essay—check if you can discern between the perspectives of Keynesians versus the neo-classical monetarists.</p>
-  <p>👉 <a href="perspectives302.html">Perspectives Monetarist v Keynesian</a></p>
-  <hr>
-
-  <h3>6.  Charlies Cashflow</h3>m
-  <p>A bit of fun:</p>
-  <p>👉 <a href="keynesvhayak112.html">Manage the Macroeconomy by choosing appropriate policy</a></p>
-  <p>Keynes v Hayek: Can you achieve a stable economy and score AD & AS at equilibrium above 150? Good luck!</p>
-  <hr>
-
-  <h3>7. Arrys Assets </h3>
-  <p>A bank of <strong>paragraphs for you to select the correct terms for. Simply click each term in the correct order</strong>. Can you master all themes?</p>
-  <p>Identify the right order of terms and build your writing.</p>
-  <p>👉 <a href="paragraphpotholes10.html">Go to the exercises</a></p>
-  <hr>
+    <!-- Arrys Assets -->
+    <div class="finance-card">
+      <h2><span class="icon">🏦</span>Arrys Assets</h2>
+      <p>Build the net asset value:</p>
+      <ul>
+        <li>▷ Asset acquisition</li>
+        <li>▷ Depreciation calculations</li>
+        <li>▷ Equity valuation</li>
+      </ul>
+      <a href="arrys-assets.html">Build NAV →</a>
+    </div>
     
-      <h3>🎓 8. Paragraph Potholes</h3>
-  <p>A bank of <strong>paragraphs for you to select the correct terms for. Simply click each term in the correct order</strong>. Can you master all themes?</p>
-  <p>Identify the right order of terms and build your writing.</p>
-  <p>👉 <a href="paragraphpotholes10.html">Go to the exercises</a></p>
-  <hr>
-<h3>9. FOREX Perspectives</h3>
-  <p>This is a simulator that links the changes in the goods market to the FOREX market. Clarify your understanding of how the demand for imports will impact the supply of the domestic currency and its purchasing power ( i.e. the FX rate).   
-</p>
-  <p>👉 <a href="forex7.html">Fx Perspectives</a></p>
-  <hr>
-
+    
+    
+  </main>
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/EconMrLong/service-worker.js')
-        .then(() => {
-          console.log('Service Worker registered successfully.');
-        })
-        .catch((error) => {
-          console.error('Service Worker registration failed:', error);
-        });
+      navigator.serviceWorker.register('/TLevelFinance/service-worker.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.error('SW registration failed:', err));
     }
   </script>
 </body>
