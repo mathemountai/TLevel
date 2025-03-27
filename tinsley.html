@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Turnover Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 30px;
+      color: #333;
+    }
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .options button {
+      display: block;
+      margin: 5px 0;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #eee;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .options button:hover {
+      background: #ddd;
+    }
+    .options button.correct {
+      background: #d4edda;
+      border-color: #28a745;
+    }
+    .options button.incorrect {
+      background: #f8d7da;
+      border-color: #dc3545;
+    }
+    .score {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    #next-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h1>Turnover Quiz: Test Your Business Knowledge</h1>
+  <div id="quiz"></div>
+  <div class="score" id="score"></div>
+  <button id="next-btn" onclick="nextQuestion()">Next</button>
+</div>
+
+<script>
+  const quizData = [
+    {
+      question: "1. What is “sales turnover”?",
+      options: [
+        "A) Total revenue from sales before expenses",
+        "B) The number of employees leaving a company",
+        "C) The amount of profit a company makes",
+        "D) The total amount of products produced"
+      ],
+      answer: 0
+    },
+    {
+      question: "2. If a company has a turnover of £50,000 and the cost of goods sold (COGS) is £20,000, what is the gross profit?",
+      options: [
+        "A) £70,000",
+        "B) £30,000",
+        "C) £50,000",
+        "D) £20,000"
+      ],
+      answer: 1
+    },
+    {
+      question: "3. A high inventory turnover ratio means…",
+      options: [
+        "A) The company is selling products quickly",
+        "B) The company has too much stock",
+        "C) Customers are not buying the products",
+        "D) The company is losing money"
+      ],
+      answer: 0
+    },
+    {
+      question: "4. How can a company increase its turnover?",
+      options: [
+        "A) Lowering prices to attract more customers",
+        "B) Expanding its product range",
+        "C) Improving marketing and sales strategies",
+        "D) All of the above"
+      ],
+      answer: 3
+    },
+    {
+      question: "5. If a company’s accounts receivable turnover is low, what does it indicate?",
+      options: [
+        "A) Customers are paying quickly",
+        "B) The company is struggling to collect payments",
+        "C) The company has no outstanding invoices",
+        "D) The company is making a high profit"
+      ],
+      answer: 1
+    },
+    {
+      question: "6. Which of the following industries is likely to have the highest turnover ratio?",
+      options: [
+        "A) Car manufacturing",
+        "B) Grocery stores",
+        "C) Luxury fashion brands",
+        "D) Real estate"
+      ],
+      answer: 1
+    },
+    {
+      question: "7. What is the formula for calculating sales turnover?",
+      options: [
+        "A) Sales Revenue - Expenses",
+        "B) Selling Price × Quantity Sold",
+        "C) Net Profit ÷ Total Assets",
+        "D) Revenue × Costs"
+      ],
+      answer: 1
+    },
+    {
+      question: "8. If a business has a low turnover rate, what could be a possible reason?",
+      options: [
+        "A) Poor pricing strategy",
+        "B) Low customer demand",
+        "C) Ineffective marketing",
+        "D) All of the above"
+      ],
+      answer: 3
+    },
+    {
+      question: "9. Which financial statement shows a company’s turnover?",
+      options: [
+        "A) Balance Sheet",
+        "B) Income Statement (Profit & Loss)",
+        "C) Cash Flow Statement",
+        "D) Statement of Equity"
+      ],
+      answer: 1
+    },
+    {
+      question: "10. Why is tracking turnover important for businesses?",
+      options: [
+        "A) It helps understand financial health and growth",
+        "B) It helps reduce employee turnover",
+        "C) It determines how much money is in the bank",
+        "D) It only matters for big companies"
+      ],
+      answer: 0
+    }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  const quiz = document.getElementById("quiz");
+  const scoreDiv = document.getElementById("score");
+  const nextBtn = document.getElementById("next-btn");
+
+  function loadQuestion() {
+    const q = quizData[currentQuestion];
+    quiz.innerHTML = `
+      <div class="question"><strong>${q.question}</strong></div>
+      <div class="options">
+        ${q.options.map((opt, i) => `<button onclick="selectOption(${i}, this)">${opt}</button>`).join("")}
+      </div>
+    `;
+    nextBtn.style.display = "none";
+  }
+
+  function selectOption(index, btn) {
+    const buttons = document.querySelectorAll(".options button");
+    buttons.forEach(b => b.disabled = true);
+
+    const correct = quizData[currentQuestion].answer;
+
+    if (index === correct) {
+      btn.classList.add("correct");
+      score++;
+    } else {
+      btn.classList.add("incorrect");
+      buttons[correct].classList.add("correct");
+    }
+
+    nextBtn.style.display = "block";
+  }
+
+  function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+      loadQuestion();
+    } else {
+      quiz.innerHTML = "";
+      nextBtn.style.display = "none";
+      scoreDiv.innerHTML = `🎉 You scored <strong>${score} out of ${quizData.length}</strong>!`;
+    }
+  }
+
+  loadQuestion();
+</script>
+
+</body>
+</html>
