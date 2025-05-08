@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charlies CashFlow Challenge:Survive or thrive!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      padding: 1em;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    #balance {
+      font-size: 1.5em;
+      margin: 1em 0;
+      color: #2c3e50;
+    }
+    #question {
+      margin: 1em 0;
+      font-weight: bold;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 0.5em 0;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    .options button:hover {
+      background: #2980b9;
+    }
+    #feedback {
+      margin-top: 1em;
+      font-weight: bold;
+    }
+    #game-over {
+      margin-top: 2em;
+      font-size: 1.2em;
+      text-align: center;
+      color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cash Flow Climber: Survive the Storm!</h1>
+  <div id="balance">Cash Balance: £10,000</div>
+  <div id="question">Loading question...</div>
+  <div class="options" id="options"></div>
+  <div id="feedback"></div>
+  <div id="game-over"></div>
+
+  <script>
+    const questions = [
+      {
+        q: "Your customers are slow to pay. What action helps cash flow most?",
+        options: [
+          { text: "Offer 5% discount for early payment", correct: true },
+          { text: "Extend payment terms to 60 days", correct: false },
+          { text: "Ignore late payments", correct: false },
+        ]
+      },
+      {
+        q: "You're facing a surprise repair bill. What’s the best approach?",
+        options: [
+          { text: "Use emergency cash reserves", correct: true },
+          { text: "Take out a long-term loan", correct: false },
+          { text: "Delay payment for 3 months", correct: false },
+        ]
+      },
+      {
+        q: "Forecast shows a negative cash flow next month. What should you do?",
+        options: [
+          { text: "Delay non-essential purchases", correct: true },
+          { text: "Increase staff bonuses", correct: false },
+          { text: "Ignore the forecast", correct: false },
+        ]
+      },
+      {
+        q: "Trade payable period is 30 days, but you're paying in 7. What helps?",
+        options: [
+          { text: "Use full 30-day credit term", correct: true },
+          { text: "Pay immediately", correct: false },
+          { text: "Switch to cash-only purchases", correct: false },
+        ]
+      },
+      {
+        q: "A major debtor delays payment. What’s the best short-term solution?",
+        options: [
+          { text: "Arrange short-term overdraft", correct: true },
+          { text: "Cut all supplier payments", correct: false },
+          { text: "Fire staff to save money", correct: false },
+        ]
+      },
+      {
+        q: "What’s a benefit of cash flow forecasting?",
+        options: [
+          { text: "Identify future cash shortages", correct: true },
+          { text: "Increase profit margins", correct: false },
+          { text: "Avoid paying taxes", correct: false },
+        ]
+      },
+      {
+        q: "You want to improve accounts receivable. What’s best?",
+        options: [
+          { text: "Send invoices immediately", correct: true },
+          { text: "Only bill quarterly", correct: false },
+          { text: "Stop chasing overdue payments", correct: false },
+        ]
+      },
+    ];
+
+    let balance = 10000;
+    let usedIndexes = [];
+    let questionCount = 0;
+
+    function randomQuestion() {
+      if (questionCount >= 7 || balance < 0) {
+        endGame();
+        return;
+      }
+
+      let index;
+      do {
+        index = Math.floor(Math.random() * questions.length);
+      } while (usedIndexes.includes(index));
+
+      usedIndexes.push(index);
+      const q = questions[index];
+      document.getElementById("question").innerText = `Q${questionCount + 1}: ${q.q}`;
+      const optsDiv = document.getElementById("options");
+      optsDiv.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.innerText = opt.text;
+        btn.onclick = () => handleAnswer(opt.correct);
+        optsDiv.appendChild(btn);
+      });
+    }
+
+    function handleAnswer(isCorrect) {
+      const feedback = document.getElementById("feedback");
+      if (isCorrect) {
+        balance += 1000;
+        feedback.innerText = "Correct! +£1,000 added.";
+        feedback.style.color = "green";
+      } else {
+        balance -= 2000;
+        feedback.innerText = "Wrong! -£2,000 deducted.";
+        feedback.style.color = "red";
+      }
+      updateBalance();
+      questionCount++;
+      setTimeout(() => {
+        feedback.innerText = "";
+        randomQuestion();
+      }, 1500);
+    }
+
+    function updateBalance() {
+      document.getElementById("balance").innerText = `Cash Balance: £${balance.toLocaleString()}`;
+    }
+
+    function endGame() {
+      const gameOver = document.getElementById("game-over");
+      if (balance < 0) {
+        gameOver.innerText = "Game Over: You went bust!";
+      } else {
+        gameOver.innerText = `Game Over: Final Balance £${balance.toLocaleString()}`;
+      }
+      document.getElementById("question").style.display = "none";
+      document.getElementById("options").style.display = "none";
+    }
+
+    randomQuestion();
+  </script>
+</body>
+</html>
