@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gross Profit Game: Step-by-Step Table Challenge</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 30px;
+      color: #333;
+    }
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      display: none;
+      margin-bottom: 25px;
+    }
+    .question.active {
+      display: block;
+    }
+    .question strong {
+      display: block;
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+    td, th {
+      padding: 8px;
+      border: 1px solid #ccc;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 6px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: #e67e22;
+    }
+    #next-btn {
+      display: none;
+      margin: 20px auto;
+      padding: 12px 25px;
+      font-size: 16px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #score {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h1>Gross Profit: Step-by-Step Table Challenge</h1>
+
+  <!-- Question 1 -->
+  <div class="question active" id="q1">
+    <strong>1. Fill in the missing Cost of Sales:</strong>
+    <p>Opening Inventory: £5,000<br>Purchases: £18,000<br>Closing Inventory: £3,000</p>
+    <label>Cost of Sales: <input type="text" id="input1"></label>
+    <div class="result" id="r1"></div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="question" id="q2">
+    <strong>2. Complete the Trading Account:</strong>
+    <table>
+      <tr><th>Description</th><th>Amount (£)</th></tr>
+      <tr><td>Revenue</td><td>40,000</td></tr>
+      <tr><td>Cost of Sales</td><td>30,000</td></tr>
+      <tr><td><strong>Gross Profit</strong></td><td><input type="text" id="input2"></td></tr>
+    </table>
+    <div class="result" id="r2"></div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question" id="q3">
+    <strong>3. What were the Purchases?</strong>
+    <p>Cost of Sales = £9,000<br>Opening Inventory = £2,000<br>Closing Inventory = £1,000</p>
+    <label>Purchases: <input type="text" id="input3"></label>
+    <div class="result" id="r3"></div>
+  </div>
+
+  <!-- Question 4 -->
+  <div class="question" id="q4">
+    <strong>4. Calculate Revenue:</strong>
+    <p>Gross Profit = £10,000<br>Cost of Sales = £15,000</p>
+    <label>Revenue: <input type="text" id="input4"></label>
+    <div class="result" id="r4"></div>
+  </div>
+
+  <!-- Question 5 -->
+  <div class="question" id="q5">
+    <strong>5. Fill in the missing Closing Inventory:</strong>
+    <p>Opening Inventory = £3,000<br>Purchases = £8,000<br>Cost of Sales = £7,000</p>
+    <label>Closing Inventory: <input type="text" id="input5"></label>
+    <div class="result" id="r5"></div>
+  </div>
+
+  <button id="next-btn" onclick="goNext()">Next</button>
+  <div id="score"></div>
+</div>
+
+<!-- Question 6 -->
+<div class="question" id="q6">
+  <strong>6. Calculate Cost of Sales:</strong>
+  <p>Opening Inventory = £4,200.50<br>Purchases = £10,350.25<br>Closing Inventory = £2,110.75</p>
+  <label>Cost of Sales: <input type="text" id="input6"></label>
+  <div class="result" id="r6"></div>
+</div>
+
+<!-- Question 7 -->
+<div class="question" id="q7">
+  <strong>7. Gross Profit?</strong>
+  <table>
+    <tr><td>Revenue</td><td>£65,999.99</td></tr>
+    <tr><td>Cost of Sales</td><td>£37,468.69</td></tr>
+    <tr><td><strong>Gross Profit</strong></td><td><input type="text" id="input7"></td></tr>
+  </table>
+  <div class="result" id="r7"></div>
+</div>
+
+<!-- Question 8 -->
+<div class="question" id="q8">
+  <strong>8. Purchases?</strong>
+  <p>Opening Inventory = £1,250<br>Closing Inventory = £750<br>Cost of Sales = £5,300</p>
+  <label>Purchases: <input type="text" id="input8"></label>
+  <div class="result" id="r8"></div>
+</div>
+
+<!-- Question 9 -->
+<div class="question" id="q9">
+  <strong>9. Revenue?</strong>
+  <p>Gross Profit = £17,457.60<br>Cost of Sales = £24,880.40</p>
+  <label>Revenue: <input type="text" id="input9"></label>
+  <div class="result" id="r9"></div>
+</div>
+
+<!-- Question 10 -->
+<div class="question" id="q10">
+  <strong>10. Closing Inventory?</strong>
+  <p>Opening = £2,222.22<br>Purchases = £6,000<br>Cost of Sales = £7,111.11</p>
+  <label>Closing Inventory: <input type="text" id="input10"></label>
+  <div class="result" id="r10"></div>
+</div>
+
+
+<script>
+  const steps = [
+    { id: 1, answer: 20000, hint: "Cost of Sales = Opening + Purchases - Closing" },
+    { id: 2, answer: 10000, hint: "Gross Profit = Revenue - Cost of Sales" },
+    { id: 3, answer: 8000,  hint: "Purchases = Cost of Sales - Opening + Closing" },
+    { id: 4, answer: 25000, hint: "Revenue = Gross Profit + Cost of Sales" },
+    { id: 5, answer: 4000,  hint: "Closing = Opening + Purchases - Cost of Sales" }
+  ];
+
+  let current = 0;
+  let score = 0;
+
+  function checkAnswer(id, inputId, resultId, correctAnswer, hint) {
+    const val = parseFloat(document.getElementById(inputId).value.trim());
+    const result = document.getElementById(resultId);
+    const nextBtn = document.getElementById("next-btn");
+    if (val === correctAnswer) {
+      result.innerHTML = `<span class="correct">Correct!</span> ${hint}`;
+      nextBtn.style.display = "block";
+      score++;
+    } else {
+      result.innerHTML = `<span class="incorrect">Try again.</span> Hint: ${hint}`;
+    }
+  }
+
+  steps.forEach(step => {
+    const input = document.getElementById(`input${step.id}`);
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        checkAnswer(step.id, `input${step.id}`, `r${step.id}`, step.answer, step.hint);
+      }
+    });
+  });
+
+  function goNext() {
+    document.getElementById(`q${steps[current].id}`).classList.remove("active");
+    current++;
+    const next = steps[current];
+    const nextBtn = document.getElementById("next-btn");
+
+    if (next) {
+      document.getElementById(`q${next.id}`).classList.add("active");
+      nextBtn.style.display = "none";
+    } else {
+      document.getElementById("score").textContent = `You've completed the challenge! Score: ${score} / ${steps.length}`;
+      nextBtn.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
